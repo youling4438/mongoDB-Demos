@@ -54,6 +54,7 @@ const insertDocuments = (db, cb) => {
 
 client.connect(err => {
     if (err) {
+        console.log("err", err);
         return;
     }
     console.log("Connected successfully to server!");
