@@ -37,3 +37,29 @@ client.connect(err => {
         client.close();
     });
 });
+
+const findDocumentsWithFilter = (db, filter, cb) => {
+    const collection = db.collection("studentsInfo");
+    collection.find(filter).toArray((err, result) => {
+        if (err) {
+            console.log("err", err);
+        }
+        console.log("result:", result);
+        console.log(
+            `show all documents from collection about ${result.length} items!`
+        );
+        cb(result);
+    });
+};
+
+client.connect(err => {
+    if (err) {
+        console.log("err", err);
+        return;
+    }
+    console.log("Connected successfully to server!");
+    const db = client.db(dbName);
+    findDocumentsWithFilter(db, { age: 27, sex: "male" }, () => {
+        client.close();
+    });
+});
