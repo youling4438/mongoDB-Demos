@@ -42,6 +42,7 @@ const insertDocuments = (db, cb) => {
             if (err) {
                 console.log("err", err);
             }
+            console.log("result", result);
             console.log("result.result.n", result.result.n);
             console.log("result.ops.length", result.ops.length);
             console.log(
