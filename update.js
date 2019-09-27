@@ -22,6 +22,8 @@ const updateDocuments = (db, cb) => {
                 console.log("err", err);
                 return;
             }
+            console.log("result:", result);
+            console.log("result.updatedCount: ", result.updatedCount);
             console.log("result.result.n : ", result.result.n);
             console.log(
                 `Updated the document with the field a equal to ${result.result.n}`
