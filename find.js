@@ -26,17 +26,17 @@ const findDocuments = (db, cb) => {
     });
 };
 
-client.connect(err => {
-    if (err) {
-        console.log("err", err);
-        return;
-    }
-    console.log("Connected successfully to server!");
-    const db = client.db(dbName);
-    findDocuments(db, () => {
-        client.close();
-    });
-});
+// client.connect(err => {
+//     if (err) {
+//         console.log("err", err);
+//         return;
+//     }
+//     console.log("Connected successfully to server!");
+//     const db = client.db(dbName);
+//     findDocuments(db, () => {
+//         client.close();
+//     });
+// });
 
 const findDocumentsWithFilter = (db, filter, cb) => {
     const collection = db.collection("studentsInfo");
