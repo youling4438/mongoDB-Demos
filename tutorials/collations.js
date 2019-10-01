@@ -28,6 +28,23 @@ const createCollated = (db, cb) => {
     );
 };
 
+const createCollatedIndex = (db, cb) => {
+    const collection = db.collection("contacts");
+    collection.createIndex(
+        { name: 1 },
+        { unique: 1 },
+        { collation: { locale: "en_US" } },
+        (err, result) => {
+            if (err) {
+                console.log("err", err);
+                return;
+            }
+            console.log("result", result);
+            cb(result);
+        }
+    );
+};
+
 client.connect(err => {
     if (err) {
         console.log("err", err);
@@ -35,7 +52,10 @@ client.connect(err => {
     }
     console.log("数据库连接成功");
     const db = client.db(dbName);
-    createCollated(db, () => {
+    // createCollated(db, () => {
+    //     client.close();
+    // });
+    createCollatedIndex(db, () => {
         client.close();
     });
 });
